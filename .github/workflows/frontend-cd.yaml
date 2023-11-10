@@ -110,4 +110,4 @@ jobs:
           cd frontend
           cd k8s
           aws eks update-kubeconfig --name cluster
-          kubectl apply -f .
+          kubectl apply -k .

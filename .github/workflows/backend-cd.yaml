@@ -128,4 +128,4 @@ jobs:
           cd backend
           cd k8s
           aws eks update-kubeconfig --name cluster
-          kubectl apply -f .
+          kubectl apply -k .
