@@ -123,5 +123,5 @@ jobs:
         run: |
           cd backend
           cd k8s
-          aws eks update-kubeconfig --name cluster
+          aws eks update-kubeconfig --name project3
           kubectl apply -k .
