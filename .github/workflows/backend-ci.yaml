@@ -1,6 +1,5 @@
 name: Backend Continuous Integration
 
-# Triggers for the workflow
-on:
-  # Manual trigger using the workflow_dispatch event
-  workflow_dispatch: null
+runs:
+  using: "docker"
+  image: "Dockerfile"
