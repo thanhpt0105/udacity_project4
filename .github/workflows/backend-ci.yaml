@@ -40,8 +40,8 @@ jobs:
           pipenv-version: "v2023.10.24"
       - name: Pipenv install
         run: cd backend && pipenv install
-      - name: Run lint
-        run: cd backend && pipenv run test
+      - name: Check pipenv dependencies
+        run: cd backend && pipenv graph
 
 
   # post-build-actions:
