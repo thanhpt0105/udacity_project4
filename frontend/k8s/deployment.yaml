@@ -8,16 +8,14 @@ spec:
   replicas: 1
   selector:
     matchLabels:
-      service: frontend
+      app: frontend
   template:
     metadata:
       labels:
-        service: frontend
+        app: frontend
     spec:
       containers:
-      - name: frontend
-        image: 995140118849.dkr.ecr.us-east-1.amazonaws.com/frontend:latest
-        imagePullPolicy: Always
-        ports:
-          - containerPort: 3000
-      restartPolicy: Always
+        - name: frontend
+          image: 814792666257.dkr.ecr.us-east-1.amazonaws.com/frontend:latest
+          ports:
+            - containerPort: 3000
