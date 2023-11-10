@@ -1,5 +1,0 @@
-name: Frontend Continuous Development
-
-runs:
-  using: "docker"
-  image: "Dockerfile"

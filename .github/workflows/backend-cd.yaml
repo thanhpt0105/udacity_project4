@@ -1,5 +1,0 @@
-name: Backend Continuous Development
-
-runs:
-  using: "docker"
-  image: "Dockerfile"
