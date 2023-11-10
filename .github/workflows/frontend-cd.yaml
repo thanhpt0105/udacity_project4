@@ -1,1 +1,6 @@
 name: Frontend Continuous Development
+
+# Triggers for the workflow
+on:
+  # Manual trigger using the workflow_dispatch event
+  workflow_dispatch: null
