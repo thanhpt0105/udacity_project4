@@ -102,10 +102,6 @@ jobs:
         id: install
 
       - name: Deploy to K8
-        env:
-          REGISTRY: ${{ steps.login-ecr.outputs.registry }}
-          REPOSITORY: frontend
-          IMAGE_TAG: latest
         run: |
           cd frontend
           cd k8s
