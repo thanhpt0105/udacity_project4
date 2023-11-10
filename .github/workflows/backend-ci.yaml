@@ -43,8 +43,6 @@ jobs:
       - name: Run lint
         run: cd backend && pipenv run lint
 
-
-jobs:
   test-job:
     runs-on: ubuntu-latest
     steps:
