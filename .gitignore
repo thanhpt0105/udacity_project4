@@ -24,3 +24,5 @@ hs_err_pid*
 replay_pid*
 frontend/node_modules/
 frontend/build/
+setup/terraform/.terraform.lock.hcl
+setup/terraform/.terraform/providers/registry.terraform.io/hashicorp/aws/4.55.0/windows_amd64/terraform-provider-aws_v4.55.0_x5.exe
