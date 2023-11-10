@@ -39,11 +39,30 @@ jobs:
         with:
           pipenv-version: "v2023.10.24"
       - name: Pipenv install
+        run: cd backend && pipenv install -d
+      - name: Run lint
+        run: cd backend && pipenv run lint
+
+
+jobs:
+  test-job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+      - name: Set up Python 
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.12'
+          cache: "pipenv"
+      - name: Run pipenv
+        uses: tiagovrtr/actions-pipenv@v1
+        with:
+          pipenv-version: "v2023.10.24"
+      - name: Pipenv install
         run: cd backend && pipenv install
-      - name: Check pipenv dependencies
-        run: cd backend && pipenv graph
-
-
+      - name: Run test
+        run: cd backend && pipenv run test
   # post-build-actions:
   #   needs: [build-and-test-1, build-and-test-2]
   #   runs-on: ubuntu-latest
