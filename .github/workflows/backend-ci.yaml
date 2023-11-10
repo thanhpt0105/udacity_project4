@@ -34,10 +34,12 @@ jobs:
         with:
           python-version: '3.12'
           cache: "pipenv"
-      - name: Run image
+      - name: Run pipenv
         uses: tiagovrtr/actions-pipenv@v1
         with:
           pipenv-version: "v2023.10.24"
+      - name: Pipenv install
+        run: pipenv install
       - name: Run lint
         run: pipenv run lint
 
