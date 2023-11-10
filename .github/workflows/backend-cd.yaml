@@ -7,11 +7,11 @@ on:
   workflow_dispatch: null
   
   # Automatic trigger on push events to the main branch
-  # push:
-  #   branches:
-  #     - main
-  #   paths:
-  #     - "backend/**"
+  push:
+    branches:
+      - main
+    paths:
+      - "backend/**"
       
   # Automatic trigger on pull request events targeting the main branch
   # pull_request:

@@ -7,11 +7,11 @@ on:
   workflow_dispatch: null
   
   # Automatic trigger on push events to the main branch
-  # push:
-  #   branches:
-  #     - main
-  #   paths:
-  #     - "frontend/**"
+  push:
+    branches:
+      - main
+    paths:
+      - "frontend/**"
 
 jobs:
   test-job:
