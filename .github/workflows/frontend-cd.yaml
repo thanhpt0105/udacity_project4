@@ -109,5 +109,5 @@ jobs:
         run: |
           cd frontend
           cd k8s
-          aws eks update-kubeconfig --name project3
+          aws eks update-kubeconfig --name cluster
           kubectl apply -f .

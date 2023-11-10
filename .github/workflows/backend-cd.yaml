@@ -96,3 +96,36 @@ jobs:
   #       with:
   #         name: test-results
   #         path: test-results.xml
+
+  deploy-to-k8-job:
+    needs: [build-job]
+    runs-on: ubuntu-latest
+    env:
+      AWS_DEFAULT_REGION: us-east-1
+      AWS_ACCOUNT_ID: 814792666257
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+      
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v2
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-session-token: ${{secrets.AWS_SESSION_TOKEN}}
+          aws-region: us-east-1
+
+      - name: 
+        uses: azure/setup-kubectl@v3
+        id: install
+
+      - name: Deploy to K8
+        env:
+          REGISTRY: ${{ steps.login-ecr.outputs.registry }}
+          REPOSITORY: backend
+          IMAGE_TAG: latest
+        run: |
+          cd backend
+          cd k8s
+          aws eks update-kubeconfig --name cluster
+          kubectl apply -f .
