@@ -63,17 +63,22 @@ jobs:
         run: cd backend && pipenv install
       - name: Run test
         run: cd backend && pipenv run test
-  
+
   build-job:
-    needs: [lint-job, test-job]
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
-    - name: Build, tag docker image
-        env:
-          REPOSITORY: backend
-          IMAGE_TAG: latest
-        run: |
-          cd backend
-          docker build -t $REPOSITORY:$IMAGE_TAG .
+      - name: Set up Python 
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.12'
+          cache: "pipenv"
+      - name: Run pipenv
+        uses: tiagovrtr/actions-pipenv@v1
+        with:
+          pipenv-version: "v2023.10.24"
+      - name: Pipenv install
+        run: cd backend && pipenv install
+      - name: Run test
+        run: cd backend && pipenv run test
