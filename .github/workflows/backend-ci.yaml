@@ -63,6 +63,20 @@ jobs:
         run: cd backend && pipenv install
       - name: Run test
         run: cd backend && pipenv run test
+
+  build-job:
+    needs: [lint-job, test-job]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+    - name: Build, tag docker image
+        env:
+          REPOSITORY: backend
+          IMAGE_TAG: latest
+        run: |
+          cd backend
+          docker build -t $REPOSITORY:$IMAGE_TAG .
   # post-build-actions:
   #   needs: [build-and-test-1, build-and-test-2]
   #   runs-on: ubuntu-latest
