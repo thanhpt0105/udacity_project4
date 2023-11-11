@@ -70,7 +70,21 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
-      - name: Build tag docker image
+      - name: Set up Python 
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.12'
+          cache: "pipenv"
+      - name: Run pipenv
+        uses: tiagovrtr/actions-pipenv@v1
+        with:
+          pipenv-version: "v2023.10.24"
+      - name: Pipenv install
+        run: cd backend && pipenv install
+      - name: Run test
+        run: cd backend && pipenv run test
+
+      - name: Build, tag, and push docker image to Amazon ECR
         env:
           REPOSITORY: backend
           IMAGE_TAG: latest
